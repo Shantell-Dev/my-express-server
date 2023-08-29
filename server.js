@@ -1,20 +1,19 @@
-/**const express = require('express');
-const server = express();
-const port = 3000; // Choose a port number
+const express = require('express');
+const server = express();// Choose a port number
 
-server.get('/', (req, res) => {
+/**server.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 })
 
-// Make everything inside of public/ available*/
-const express = require("express");
-const app = express()
-app.use(express.static('public'))
 
-app.get('/cat', (request, response, next) => {
+const express = require("express");
+const server = express()*/
+server.use(express.static("public"));
+
+/**server.get('/cat', (request, response, next) => {
   response.send(`
     <!doctype html>
     <html>
@@ -31,8 +30,10 @@ app.get('/cat', (request, response, next) => {
     </html>
   `);
 });
+ */
 
-// ...
+server.get('/home', (request, response, next) => response.sendFile(__dirname + '/views/home-page.html'));
+server.get('/cat', (request, response, next) => response.sendFile(__dirname + '/views/cat-page.html'));
+server.listen(3000,() => console.log('My listening port 3000!'));
 
-
-
+    
